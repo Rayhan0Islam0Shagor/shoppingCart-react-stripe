@@ -12,14 +12,12 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
-
 app.use(express.static(path.resolve(__dirname, "./client", "build")));
+
+// Routes
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client", "build", "index.html"));
 });
-
-// Routes
-
 app.post("/checkout", async (req, res) => {
   const items = req.body.items;
   let lineItems = [];
