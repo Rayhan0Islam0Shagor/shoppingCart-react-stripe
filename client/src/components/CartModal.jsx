@@ -12,7 +12,7 @@ const CartModal = ({ show, handleClose }) => {
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:5000/checkout", {
+    await fetch("https://shopping-cart-sable-nine.vercel.app/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
