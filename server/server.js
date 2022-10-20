@@ -12,11 +12,11 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, "./client", "build")));
+app.use(express.static(path.resolve(__dirname, "../client", "build")));
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
 });
 app.post("/checkout", async (req, res) => {
   const items = req.body.items;
@@ -34,8 +34,8 @@ app.post("/checkout", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
+    success_url: "https://shopping-cart-sable-nine.vercel.app/success",
+    cancel_url: "https://shopping-cart-sable-nine.vercel.app/cancel",
   });
 
   res.send(
